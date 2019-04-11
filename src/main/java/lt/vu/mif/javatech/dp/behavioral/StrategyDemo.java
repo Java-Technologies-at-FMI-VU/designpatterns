@@ -2,18 +2,22 @@ package lt.vu.mif.javatech.dp.behavioral;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import lombok.RequiredArgsConstructor;
 
 interface Payment {
     void pay(BigDecimal ammount);
 }
 
-@RequiredArgsConstructor
 class CreditCardPayment implements Payment {
 
     private final BigInteger number;
     private final String name;
     private final String expYearMonth;
+
+    public CreditCardPayment(BigInteger number, String name, String expYearMonth) {
+        this.number = number;
+        this.name = name;
+        this.expYearMonth = expYearMonth;
+    }
     
     @Override
     public void pay(BigDecimal ammount) {
@@ -22,11 +26,15 @@ class CreditCardPayment implements Payment {
     
 }
 
-@RequiredArgsConstructor
 class PayPalPayment implements Payment {
 
     private final String username;
     private final String password;
+
+    public PayPalPayment(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
     
     @Override
     public void pay(BigDecimal ammount) {

@@ -1,10 +1,6 @@
 package lt.vu.mif.javatech.dp.printershape;
 
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
-@ToString
-@RequiredArgsConstructor
 public class HpPrinter implements Printer {
 
     @Override
@@ -12,4 +8,9 @@ public class HpPrinter implements Printer {
         System.out.format("HP prints %s%n", s);
     }
 
+    @Override
+    public String toString() {
+        return "HpPrinter{" + '}';
+    }
+    
 }

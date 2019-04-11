@@ -3,12 +3,14 @@ package lt.vu.mif.javatech.dp.di;
 import java.io.PrintStream;
 import java.util.Collection;
 import java.util.LinkedHashSet;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 class StudentFinder01 implements StudentFinder {
     
     private final StudentDao dao;
+
+    public StudentFinder01(StudentDao dao) {
+        this.dao = dao;
+    }
     
     @Override
     public Student findStudent(String name) {
@@ -17,12 +19,16 @@ class StudentFinder01 implements StudentFinder {
     
 }
 
-@RequiredArgsConstructor
 class Course01 {
     
     private final String name;
     private final StudentFinder finder;
     private final Collection<Student> students = new LinkedHashSet<>();
+
+    public Course01(String name, StudentFinder finder) {
+        this.name = name;
+        this.finder = finder;
+    }
     
     public void add(String name) {
         Student s = finder.findStudent(name);

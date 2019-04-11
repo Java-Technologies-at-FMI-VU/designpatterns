@@ -6,20 +6,51 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import java.util.Objects;
 
-@ToString
-@EqualsAndHashCode(of = "value")
-@RequiredArgsConstructor
 abstract class Element<T> {
 
-    @Getter
     private final T value;
 
+    public Element(T value) {
+        this.value = value;
+    }
+    
     abstract void accept(Visitor v);
+
+    public T getValue() {
+        return value;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.value);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Element<?> other = (Element<?>) obj;
+        if (!Objects.equals(this.value, other.value)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Element{" + "value=" + value + '}';
+    }
 
 }
 
@@ -57,7 +88,6 @@ interface Visitor {
 
 }
 
-@Getter
 class CountVisitor implements Visitor {
 
     private int words = 0;
@@ -73,9 +103,16 @@ class CountVisitor implements Visitor {
         numbers += 1;
     }
 
+    public int getWords() {
+        return words;
+    }
+
+    public int getNumbers() {
+        return numbers;
+    }
+    
 }
 
-@Getter
 class FrequencyVisitor implements Visitor {
 
     private final FrequencyMap<Word> words = new FrequencyMap<>();
@@ -98,12 +135,23 @@ class FrequencyVisitor implements Visitor {
         }
     }
 
+    public FrequencyMap<Word> getWords() {
+        return words;
+    }
+
+    public FrequencyMap<Number> getNumbers() {
+        return numbers;
+    }
+
 }
 
-@RequiredArgsConstructor
 class TextProcessor {
 
     private final String text;
+
+    public TextProcessor(String text) {
+        this.text = text;
+    }
 
     public void process(Visitor visitor) {
         for (String token : text.split(" |\\.|,")) {

@@ -2,8 +2,6 @@ package lt.vu.mif.javatech.dp.behavioral;
 
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 interface Mediator {
     
@@ -12,15 +10,26 @@ interface Mediator {
     
 }
 
-@RequiredArgsConstructor
 abstract class Colleague {
     
-    @Getter
     private final String name;
     private final Mediator mediator;
+
+    public Colleague(String name, Mediator mediator) {
+        this.name = name;
+        this.mediator = mediator;
+    }
     
     public void send(String message) {
         this.mediator.send(message, this);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Mediator getMediator() {
+        return mediator;
     }
     
     public abstract void receive(String message, Colleague sender);

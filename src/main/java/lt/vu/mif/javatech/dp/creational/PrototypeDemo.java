@@ -1,19 +1,23 @@
 package lt.vu.mif.javatech.dp.creational;
 
-import lombok.AllArgsConstructor;
-import lombok.Setter;
 import lt.vu.mif.javatech.dp.shape.Circle;
 import lt.vu.mif.javatech.dp.shape.Shape;
 import lt.vu.mif.javatech.dp.shape.Square;
 
-@AllArgsConstructor
 class Creator {
     
-    @Setter
     private Shape proto;
+
+    public Creator(Shape proto) {
+        this.proto = proto;
+    }
     
     public Shape create() {
         return proto.clone();
+    }
+
+    public void setProto(Shape proto) {
+        this.proto = proto;
     }
     
 }

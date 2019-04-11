@@ -2,16 +2,18 @@ package lt.vu.mif.javatech.dp.vehicle;
 
 import java.util.ArrayList;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 import lt.vu.mif.javatech.dp.shape.Shape;
 import lt.vu.mif.javatech.dp.shape.ShapeType;
 
-@RequiredArgsConstructor
 public class Vehicle {
 
     private final String name;
     private final List<Shape> shapes = new ArrayList<>();
 
+    public Vehicle(String name) {
+        this.name = name;
+    }
+    
     public void addShape(Shape s) {
         shapes.add(s);
     }

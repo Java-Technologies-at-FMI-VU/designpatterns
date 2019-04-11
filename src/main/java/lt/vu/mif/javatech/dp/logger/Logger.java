@@ -1,9 +1,5 @@
 package lt.vu.mif.javatech.dp.logger;
 
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-
-@RequiredArgsConstructor
 public abstract class Logger {
 
     public enum LEVEL {
@@ -11,10 +7,12 @@ public abstract class Logger {
     }
 
     protected final LEVEL level;
-
-    @Setter
     protected Logger nextLogger;
 
+    public Logger(LEVEL level) {
+        this.level = level;
+    }
+    
     public void logMessage(LEVEL level, String message) {
 
         if (this.level.compareTo(level) >= 0) {
@@ -27,6 +25,10 @@ public abstract class Logger {
 
     }
 
+    public void setNextLogger(Logger nextLogger) {
+        this.nextLogger = nextLogger;
+    }
+    
     abstract protected void write(String message);
 
 }

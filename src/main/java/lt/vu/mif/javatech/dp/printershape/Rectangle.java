@@ -1,8 +1,5 @@
 package lt.vu.mif.javatech.dp.printershape;
 
-import lombok.ToString;
-
-@ToString
 public class Rectangle extends Shape {
 
     private final int width;
@@ -14,4 +11,9 @@ public class Rectangle extends Shape {
         this.height = height;
     }
 
+    @Override
+    public String toString() {
+        return "Rectangle{" + "width=" + width + ", height=" + height + '}';
+    }
+    
 }

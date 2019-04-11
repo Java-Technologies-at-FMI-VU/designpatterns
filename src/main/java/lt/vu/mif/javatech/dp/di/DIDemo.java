@@ -5,18 +5,21 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import lombok.ToString;
 
 //@Singleton
 class SomeService {
     
 }
 
-@ToString
 class Test {
     
     @Inject
     private SomeService someService;    
+
+    @Override
+    public String toString() {
+        return "Test{" + "someService=" + someService + '}';
+    }
     
 }
 

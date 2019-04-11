@@ -1,15 +1,17 @@
 package lt.vu.mif.javatech.dp.behavioral;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
-@ToString
 class TextFile {
 
-    @Getter @Setter
     private String title;
     private StringBuilder data = new StringBuilder();
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
     
     public void add(String str) {
         this.data.append(str);
@@ -39,6 +41,11 @@ class TextFile {
             this.data = new StringBuilder(db.data);
         }
         
+    }
+
+    @Override
+    public String toString() {
+        return "TextFile{" + "title=" + title + ", data=" + data + '}';
     }
     
 }

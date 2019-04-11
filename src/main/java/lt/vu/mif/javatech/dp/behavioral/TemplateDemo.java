@@ -1,7 +1,5 @@
 package lt.vu.mif.javatech.dp.behavioral;
 
-import lombok.RequiredArgsConstructor;
-
 abstract class Summator {
     
     public int getSum() {
@@ -20,11 +18,14 @@ abstract class Summator {
     
 }
 
-@RequiredArgsConstructor
 class StringSummator extends Summator {
 
     private final String str;
-    
+
+    public StringSummator(String str) {
+        this.str = str;
+    }
+
     @Override
     protected int[] readData() {
         String[] elems = str.split(",");

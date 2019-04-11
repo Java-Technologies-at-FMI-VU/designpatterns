@@ -1,17 +1,19 @@
 package lt.vu.mif.javatech.dp.structural;
 
-import lombok.RequiredArgsConstructor;
 import lt.vu.mif.javatech.dp.shape.Circle;
 import lt.vu.mif.javatech.dp.shape.Shape;
 import lt.vu.mif.javatech.dp.shape.ShapeType;
 
 public class DecoratorDemo {
 
-    @RequiredArgsConstructor
     private static class RedShape implements Shape {
 
         private final Shape shape;
 
+        public RedShape(Shape shape) {
+            this.shape = shape;
+        }
+        
         @Override
         public ShapeType getType() {
             return shape.getType();

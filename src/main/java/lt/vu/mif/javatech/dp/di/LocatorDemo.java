@@ -3,21 +3,20 @@ package lt.vu.mif.javatech.dp.di;
 import java.io.PrintStream;
 import java.util.Collection;
 import java.util.LinkedHashSet;
-import lombok.RequiredArgsConstructor;
 
 class ServiceLocator {
     
     private static class Holder {
-        public static final StudentDao dao = new StudentDaoDatabase();
-        public static final StudentFinder finder = new StudentFinder02();
+        public static final StudentDao DAO = new StudentDaoDatabase();
+        public static final StudentFinder FINDER = new StudentFinder02();
     }
     
     public static StudentDao getDao() {
-        return Holder.dao;
+        return Holder.DAO;
     }
     
     public static StudentFinder getFinder() {
-        return Holder.finder;
+        return Holder.FINDER;
     }
     
 }
@@ -31,12 +30,15 @@ class StudentFinder02 implements StudentFinder {
     
 }
 
-@RequiredArgsConstructor
 class Course02 {
     
     private static final StudentFinder FINDER = ServiceLocator.getFinder();
     private final String name;
     private final Collection<Student> students = new LinkedHashSet<>();
+
+    public Course02(String name) {
+        this.name = name;
+    }
     
     public void add(String name) {
         Student s = FINDER.findStudent(name);

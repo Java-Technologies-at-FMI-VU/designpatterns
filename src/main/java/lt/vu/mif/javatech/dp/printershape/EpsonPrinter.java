@@ -1,10 +1,5 @@
 package lt.vu.mif.javatech.dp.printershape;
 
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
-
-@ToString
-@RequiredArgsConstructor
 public class EpsonPrinter implements Printer {
 
     @Override
@@ -12,4 +7,9 @@ public class EpsonPrinter implements Printer {
         System.out.format("Epson prints %s%n", s);
     }
 
+    @Override
+    public String toString() {
+        return "EpsonPrinter{" + '}';
+    }
+    
 }

@@ -2,9 +2,6 @@ package lt.vu.mif.javatech.dp.behavioral;
 
 import java.util.HashSet;
 import java.util.Set;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 abstract class Subject {
     
@@ -44,11 +41,17 @@ class Topic extends Subject {
 
 }
 
-@RequiredArgsConstructor
 abstract class Observer {
     
-    @Getter(AccessLevel.PROTECTED)
     private final Subject subject;
+
+    public Observer(Subject subject) {
+        this.subject = subject;
+    }
+
+    protected Subject getSubject() {
+        return subject;
+    }
     
     public abstract void update();
     

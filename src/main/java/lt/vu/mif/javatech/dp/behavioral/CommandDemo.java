@@ -2,7 +2,6 @@ package lt.vu.mif.javatech.dp.behavioral;
 
 import java.util.ArrayList;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 
 import lt.vu.mif.javatech.dp.stock.BuyStock;
 import lt.vu.mif.javatech.dp.stock.Order;
@@ -10,12 +9,15 @@ import lt.vu.mif.javatech.dp.stock.SellStock;
 import lt.vu.mif.javatech.dp.stock.Stock;
 import lt.vu.mif.javatech.dp.stock.StockExchange;
 
-@RequiredArgsConstructor
 class Broker {
 
     private final StockExchange exchange;
     private final List<Order> orders = new ArrayList<>();
 
+    public Broker(StockExchange exchange) {
+        this.exchange = exchange;
+    }
+    
     public void placeOrder(Order o) {
         orders.add(o);
     }

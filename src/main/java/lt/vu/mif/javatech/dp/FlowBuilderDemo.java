@@ -1,13 +1,9 @@
 package lt.vu.mif.javatech.dp;
 
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
-
 interface ObjBuilder<T> {
     T build();
 }
 
-@ToString
 class Book {
 
     private final String author;
@@ -20,13 +16,16 @@ class Book {
         this.year = b.year;
     }
 
-    @RequiredArgsConstructor
     static class Builder implements ObjBuilder<Book> {
 
         private final String title;
         private String author = "unknown";
         private int year = Integer.MIN_VALUE;
 
+        public Builder(String title) {
+            this.title = title;
+        }
+        
         public Builder author(String author) {
             this.author = author;
             return this;
@@ -41,7 +40,14 @@ class Book {
         public Book build() {
             return new Book(this);
         }
+        
     }
+
+    @Override
+    public String toString() {
+        return "Book{" + "author=" + author + ", title=" + title + ", year=" + year + '}';
+    }
+    
 }
 
 public class FlowBuilderDemo {

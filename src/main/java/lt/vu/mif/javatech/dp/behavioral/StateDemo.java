@@ -1,7 +1,5 @@
 package lt.vu.mif.javatech.dp.behavioral;
 
-import lombok.Setter;
-
 interface State {
     
     void doAction();
@@ -28,13 +26,16 @@ class OffState implements State {
 
 class WashingMachine implements State {
 
-    @Setter
     private State state;
     
     public WashingMachine(State state) {
         this.state = state;
     }
-    
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
     @Override
     public void doAction() {
         state.doAction();

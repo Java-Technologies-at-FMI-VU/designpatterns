@@ -1,8 +1,5 @@
 package lt.vu.mif.javatech.dp.printershape;
 
-import lombok.ToString;
-
-@ToString
 public class Circle extends Shape {
 
     private final int radius;
@@ -12,4 +9,9 @@ public class Circle extends Shape {
         this.radius = radius;
     }
 
+    @Override
+    public String toString() {
+        return "Circle{" + "radius=" + radius + '}';
+    }
+    
 }

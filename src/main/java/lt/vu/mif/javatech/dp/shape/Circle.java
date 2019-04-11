@@ -1,10 +1,7 @@
 package lt.vu.mif.javatech.dp.shape;
 
-import lombok.Getter;
-
 public class Circle implements Shape {
 
-    @Getter
     private final ShapeType type = ShapeType.CIRCLE;
 
     @Override
@@ -12,6 +9,11 @@ public class Circle implements Shape {
         System.out.println("Inside Circle::draw() method.");
     }
 
+    @Override
+    public ShapeType getType() {
+        return type;
+    }
+    
     @Override
     public Circle clone() {
         try {
